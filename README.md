@@ -1,7 +1,7 @@
 # Token Pool API
 This app can generate and assign random tokens within a pool and release them after some time.
 
-### Approach
+## Approach
 My initial appoach was to write a cron job that runs each second and updates expiry and refresh time of all the tokens in the pool. But soon realized that it is not a scalable approach.
 
 Then I came up with this logic where we can actually limit the logic in API Layer itself and this making it more scalable approach.
