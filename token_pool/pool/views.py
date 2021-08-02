@@ -12,7 +12,7 @@ class TokenPoolView(APIView):
 
     def post(self, request):
         """Method for creating new token in pool."""
-        token = TokenPool.objects.create()
+        token = TokenPool.objects.create(expiry_time = arrow.now().shift(minute=+5))
         return Response({'token': str(token.uuid)})
 
     def delete(self, request, token_uuid):
@@ -34,11 +34,13 @@ class TokenBlockView(APIView):
         try:
             token = TokenPool.objects.select_for_update(expiry_time=,
                                                         refresh_time=).first()
+            (assigned to false, expiry < =t) or (refresh_time>t , expiry < =t)
             token.assigned_to = True
             token.expiry_time = arrow.now().shift(minute=+5)
             token.refresh_time = arrow.now().shift(minute=+1)
             token.save()
             return Response({'blocked_token': str(token.uuid)})
+
         except token is None:
             raise Http404
 
@@ -48,8 +50,10 @@ class KeepAliveView(APIView):
 
     def put(self, request, token_uuid):
         """Method for keeping token alive/blocked in pool."""
-        token = TokenPool.objects.select_for_update(uuid=token_uuid).first()
-        if token.assigned_to is True:
+        token = TokenPool.objects.select_for_update(uuid=token_uuid,
+                                                    expiry_time<=arrow.now()).first()
+        token.expiry_time = arrow.now().shift(minute=+5)
+
+        if token.refresh_time and token.refresh_time < arrow.now().shift(minute=-5):
             token.refresh_time = arrow.now().shift(minute=+1)
-        else:
-            token.expiry_time = arrow.now().shift(minute=+5)
+
