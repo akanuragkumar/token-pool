@@ -19,16 +19,8 @@ To work in a sandboxed Python environment it is recommended to install the app i
     $ git clone https://github.com/akanuragkumar/token-pool.git
     $ cd token-pool
     $ pip install -r requirements.txt
-    ```
-2. Install and run Redis and Celery
-
-   If not installed then follow these steps to install [Redis](https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298)
-   and [Celery](https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298).  
-   To lean more about redis and celery rate limitting refer this [article](https://callhub.io/distributed-rate-limiting-with-redis-and-celery/).
-   
-   
-
-3. Running app
+    ```   
+2. Running app
 
    ```bash
    $ manage.py makemigrations 
