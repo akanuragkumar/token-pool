@@ -3,8 +3,10 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('current_weather/', TokenPoolView.as_view(),
-         name='pool-list'),
-    # path('mailing_list/', MailingListView.as_view(),
-    #      name='mailing-list'),
+    path('token_pool/', TokenPoolView.as_view(),
+         name='pool-token'),
+    path('block_token/', TokenBlockView.as_view(),
+         name='block-token'),
+    path('keep_alive/<uuid:token_uuid>', KeepAliveView.as_view(),
+         name='keep-alive'),
 ]
