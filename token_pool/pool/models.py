@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class TokenPool(models.Model):
-    """Token Pool model"""
+    """Token Pool model."""
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, db_index=True)
     assigned_to = models.BooleanField(default=False)
     expiry_time = models.DateTimeField(null=True)
