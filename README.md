@@ -28,6 +28,13 @@ To work in a sandboxed Python environment it is recommended to install the app i
    $ python manage.py runserver
    ``` 
    
+ 3. Running unit test cases
+ The unit test cases are written in pool/tests.py
+
+   ```bash
+   $ python manage.py test
+   ``` 
+   
 ## API Documentation 
 
 ### `Endpoint to generate unique token in the pool` 
