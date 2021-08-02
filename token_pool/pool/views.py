@@ -26,10 +26,10 @@ class TokenPoolView(APIView):
 
 
 class TokenBlockView(APIView):
-    """Token Pool create and delete view."""
+    """Token Pool view to block token."""
 
     def post(self, request):
-        """Method for creating new token in pool."""
+        """Method for blocking random token in pool."""
         token = None
         try:
             token = TokenPool.objects.select_for_update(expiry_time=,
@@ -44,8 +44,10 @@ class TokenBlockView(APIView):
 
 
 class KeepAliveView(APIView):
+    """Token Pool view to keep the token alive/blocked."""
 
     def put(self, request, token_uuid):
+        """Method for keeping token alive/blocked in pool."""
         token = TokenPool.objects.select_for_update(uuid=token_uuid).first()
         if token.assigned_to is True:
             token.refresh_time = arrow.now().shift(minute=+1)
