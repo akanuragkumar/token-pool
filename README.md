@@ -28,7 +28,7 @@ To work in a sandboxed Python environment it is recommended to install the app i
    $ python manage.py runserver
    ``` 
    
- 3. Running unit test cases
+ 3. Running unit test cases.
  The unit test cases are written in pool/tests.py
 
    ```bash
