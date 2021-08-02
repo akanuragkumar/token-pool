@@ -6,7 +6,7 @@ My initial appoach was to write a cron job that runs each second and updates exp
 
 Then I came up with this logic where we can actually limit the logic in API Layer itself and this making it more scalable approach.
 Few things which I ccould add if time was not a constraint- 
-1. Transaction lock this raise conditions would not happen.
+1. Transaction lock so that raise conditions would not happen.
 2. Write a cron job which runs every 1 hour or according to the scale which cleans up the tokens which have expired.
 
 ## Quickstart
