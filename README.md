@@ -74,7 +74,7 @@ To work in a sandboxed Python environment it is recommended to install the app i
 
 ```json
  application/json - {
-    "blocked_token": token_uuid
+    "blocked_token": "token_uuid"
 }
 ```
 
